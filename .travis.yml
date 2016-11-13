@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - oraclejdk8
+cache:
+  directores:
+    - $HOME/.gradle
+    - .gradle
+script:
+  - ./gradlew build
+notifications:
+  on_failure: change always
+  on_success: never
