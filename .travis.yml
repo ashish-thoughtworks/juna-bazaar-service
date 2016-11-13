@@ -1,12 +1,16 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 cache:
   directores:
-    - $HOME/.gradle
-    - .gradle
+  - "$HOME/.gradle"
+  - ".gradle"
 script:
-  - ./gradlew build
+- "./gradlew build"
 notifications:
   on_failure: change always
   on_success: never
+deploy:
+  provider: heroku
+  api_key:
+    secure: jPawV9FM1Ys/a1gZBV6rcQbBgujXXBQ5hcrw6JbD0X3LVtlO76imnxFrQdO/bYsLRBiqVu7VzhldfLMf/WJy4Ucjr84SudvNbq/8TJ9Aiabokc02zy7TOQgKHadeGkrH0nexKIff374/ukYMTlr5/ninr5sl4AknjRvlqc6OnWJwhxNAgOeTi036aKNINTAPnbdE0EL/oE481NHmTGOTkBAuoRw2Uj2TUo6zmMyDvPuZowbTL6W2wSON9PmALmW6pyhd5Mo21rkCV3sO/KeXjWthlJhNoBugk5GxZkEgcCh5C5ERe9oB/3Htc9Ja3n9wGmqthc8ZCWVB0H7RKaIkcwv3CFsFq/jpFQnE9YJPrRJ93SGgdFJ1ZDrXYJxqChQZGPyr/u2Pk9GvLjHjrvGwJ+CcxXjPlZP+oaptMhW/3qltB6I91XKYJxuhG82SlKAcyV2AR7cDgCZD9anssYpLcS12BSPPj9p4lrmfTX5nbFNJVQ2qGJMME/S3tuCB7nZezcC4FbrXdWRtYTcoks5/I9hGzQDxI14Ioe54zkcpXWH6kP4YP8ujT/jh1jRHypp44VT+uqzlxgCfNio9GF7r5lvq5ElgLNeiWT/Mj9FsXQG/1xWSFF6ov0+Iut1eEG6sxUY6V82OT+eRHRqp0vIyfQ0NJSU8fzUY9T42ho5Nl5w=
