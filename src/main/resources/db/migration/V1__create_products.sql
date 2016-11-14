@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS "junabazaar-master".products;
+DROP TABLE IF EXISTS products;
 
-CREATE TABLE "junabazaar-master".products
+CREATE TABLE products
 (
   id bigint NOT NULL,
   title text NOT NULL,
@@ -13,10 +13,5 @@ CREATE TABLE "junabazaar-master".products
   modification_date timestamp without time zone NOT NULL,
   category_id bigint NOT NULL,
   CONSTRAINT primary_key PRIMARY KEY (id)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "junabazaar-master".products
-  OWNER TO "junabazaar-master";
 

@@ -1,14 +1,7 @@
 package com.junabazar.inventory.model.db;
 
-<<<<<<< Updated upstream
-/**
- * Created by ashishm on 11/14/16.
- */
-public class Product {
-=======
 import javax.persistence.*;
 import java.sql.Timestamp;
-
 /**
  * Created by khantwalh on 11/14/16.
  */
@@ -47,5 +40,4 @@ public class Product {
 
     @Column(name = "category")
     Category category;
->>>>>>> Stashed changes
 }
