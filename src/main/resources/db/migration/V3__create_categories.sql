@@ -2,6 +2,6 @@ DROP TABLE IF EXISTS categories;
 
 CREATE TABLE categories
 (
-	id bigint NOT NULL,
+	id bigint PRIMARY KEY NOT NULL,
 	name text NOT NULL
 );
