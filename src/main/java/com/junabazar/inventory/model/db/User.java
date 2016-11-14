@@ -1,15 +1,25 @@
 package com.junabazar.inventory.model.db;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import lombok.Getter;
+
+import javax.persistence.*;
 
 /**
  * Created by khantwalh on 11/14/16.
  */
 
 @Table(name = "users")
+@Getter
 public class User {
-    @Column(name = "id")
-    long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    private String email;
+    private String password;
+    private String mobileNo;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }
