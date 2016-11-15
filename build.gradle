@@ -39,7 +39,5 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
-//	compile group: 'com.h2database', name: 'h2', version: '1.4.193'
-	compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
-
+	compile group: 'com.h2database', name: 'h2', version: '1.4.193'
 }

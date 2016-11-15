@@ -12,18 +12,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.jayway.restassured.RestAssured.*;
 
 import static org.junit.Assert.assertEquals;
 
-@ActiveProfiles("service-test")
+@ActiveProfiles("integration_test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JunabazarApiApplication.class)
 @IntegrationTest("server.port:0")
-@TestPropertySource(properties = "flyway.enabled=false")
 public class JunabazarApiApplicationTests {
 
     @Value("${local.server.port}")
