@@ -1,5 +1,6 @@
 package com.junabazar.inventory.model.db;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @Getter
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
