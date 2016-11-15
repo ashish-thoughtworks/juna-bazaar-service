@@ -8,7 +8,7 @@ cache:
 script:
 - "./gradlew build"
 notifications:
-  on_failure: change always
+  on_failure: always
   on_success: never
 deploy:
   provider: heroku
