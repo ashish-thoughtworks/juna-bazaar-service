@@ -1,8 +1,9 @@
 package com.junabazar.inventory.model.db;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
@@ -10,21 +11,23 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "products")
-public class Product implements Serializable {
+@Getter
+@Setter
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String title;
 
-    private float price;
+    private Double price;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String description;
 
