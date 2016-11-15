@@ -15,5 +15,4 @@ public class JunabazarApiApplicationTests {
 	public void shouldExecuteWithoutFail() {
 		assertEquals(1,1);
 	}
-
 }
