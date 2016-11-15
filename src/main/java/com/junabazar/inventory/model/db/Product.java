@@ -1,43 +1,44 @@
 package com.junabazar.inventory.model.db;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 /**
  * Created by khantwalh on 11/14/16.
  */
+@Entity
 @Table(name = "products")
-public class Product {
-    @Column(name = "id")
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
-    @Column(name = "title")
-    String title;
+    private String title;
 
-    @Column(name = "price")
-    float price;
+    private float price;
 
     @Column(name = "creation_date")
-    Timestamp creationDate;
+    private LocalDateTime creationDate;
 
-    @JoinColumn(name = "user_id")
-    @OneToOne
-    User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @Column(name = "description")
-    String description;
+    private String description;
 
     @Column(name = "is_sold")
-    boolean isSold;
+    private boolean isSold;
 
+    @ManyToOne
     @JoinColumn(name = "city_id")
-    @OneToOne
-    City city;
+    private City city;
 
     @Column(name = "modification_date")
-    Timestamp modificationDate;
+    private LocalDateTime modificationDate;
 
-    @Column(name = "category")
-    Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
