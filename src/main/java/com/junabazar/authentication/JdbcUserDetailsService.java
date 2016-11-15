@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by dharihar on 14/11/2016.
  */
@@ -19,6 +21,7 @@ public class JdbcUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<User> users = userRepository.findAll();
         User user = userRepository.findByEmail(username);
         if(user == null)
             throw new UsernameNotFoundException(username + " does not exist");

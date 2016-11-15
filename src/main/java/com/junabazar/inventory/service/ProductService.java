@@ -17,8 +17,15 @@ import java.util.List;
 @Service
 @Transactional
 public class ProductService {
-    @Autowired
+
+
     private ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository)
+    {
+        this.productRepository = productRepository;
+    }
 
     public Page<ProductView> getProducts(Pageable pageable) {
         Page<Product> products = productRepository.findAll(pageable);
@@ -32,5 +39,10 @@ public class ProductService {
             productsViewList.add(ProductsMapper.mapToView(product));
         });
         return productsViewList;
+    }
+
+    public boolean createAdd(Product product) throws RuntimeException{
+        productRepository.save(product);
+        return true;
     }
 }

@@ -33,8 +33,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile "org.flywaydb:flyway-core:4.0.3"
 	compile "org.hibernate:hibernate-java8"
+	compile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+//	compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+	compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
+
 }
