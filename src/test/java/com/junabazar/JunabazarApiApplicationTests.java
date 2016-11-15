@@ -1,30 +1,30 @@
 package com.junabazar;
 
 import com.jayway.restassured.RestAssured;
-import org.apache.http.HttpStatus;
-
-import static org.hamcrest.Matchers.*;
-
+import com.junabazar.authentication.WebSecurityConfig;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.jayway.restassured.RestAssured.*;
-
-import static org.junit.Assert.assertEquals;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.test.web.servlet.MockMvc;
+//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+//
+//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+//import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+//
+//import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+//import org.springframework.web.context.WebApplicationContext;
 
 @ActiveProfiles("integration_test")
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = JunabazarApiApplication.class)
-@IntegrationTest("server.port:0")
-public class JunabazarApiApplicationTests {
+@SpringBootTest(classes = {JunabazarApiApplication.class, WebSecurityConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public abstract class JunabazarApiApplicationTests {
 
-    @Value("${local.server.port}")
+    @LocalServerPort
     private int port;
 
     @Before
@@ -32,29 +32,31 @@ public class JunabazarApiApplicationTests {
         RestAssured.port = port;
     }
 
-    @Test
-    public void shouldExecuteWithoutFail() {
-        assertEquals(1, 1);
-    }
 
-    @Test
-    public void shouldReturn200OkWhenBaseURLIsHit() {
-        when().
-                get("/").
-                then().
-                body(is("Hello")).
-                statusCode(HttpStatus.SC_OK);
-    }
-
-    @Test
-    public void shouldLoginSuccessfullyWhenCorrectCredentialsAreProvided() {
-        given().
-                param("username", "a@b.c").
-                param("password", "password").
-                when().
-                post("/login").
-                then().
-                statusCode(HttpStatus.SC_OK);
-    }
+//    @Autowired
+//    private WebApplicationContext wac;
+//
+//    private MockMvc mockMvc;
+//
+//    @Before
+//    public void setup() {
+//        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+//    }
+//
+//    @Test
+//    public void shouldReturn200OkWhenBaseURLIsHit() throws Exception {
+//        this.mockMvc.perform(get("/"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string("Hello"));
+//    }
+//
+//    @Test
+//    public void shouldLoginSuccessfullyWhenCorrectCredentialsAreProvided() throws Exception {
+//        this.mockMvc.perform(post("/login")
+//                .param("username", "a@b.c")
+//                .param("password", "password"))
+//                .andExpect(status().isOk());
+////                .andExpect();
+//    }
 
 }
