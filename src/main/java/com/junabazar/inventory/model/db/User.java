@@ -1,6 +1,8 @@
 package com.junabazar.inventory.model.db;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @Getter
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +26,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
+
+    public User(long id, String email, String password) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+    }
 }
