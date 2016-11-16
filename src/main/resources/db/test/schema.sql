@@ -13,3 +13,9 @@ CREATE TABLE users
 	mobile_no VARCHAR(10) NOT NULL,
 	city_id bigint NOT NULL REFERENCES cities(id)
 );
+
+CREATE TABLE categories
+(
+	id bigserial PRIMARY KEY NOT NULL,
+	name VARCHAR(100) NOT NULL
+);

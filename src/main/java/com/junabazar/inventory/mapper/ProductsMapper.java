@@ -13,6 +13,12 @@ public final class ProductsMapper {
     }
 
     public static ProductView mapToView(Product product){
-        return new ProductView(product.getId(), product.getTitle(), product.getPrice(), product.getDescription(), product.getCity().getName());
+        return ProductView.builder()
+                .id(product.getId())
+                .title(product.getTitle())
+                .price(product.getPrice())
+                .description(product.getDescription())
+                .cityName(product.getCity().getName())
+                .build();
     }
 }
