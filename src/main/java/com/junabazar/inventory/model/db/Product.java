@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by khantwalh on 11/14/16.
@@ -47,4 +48,11 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductImage> productImages;
+
+    public String getFirstProductImageURL() {
+        return this.productImages.stream().findFirst().get().getImageUrl();
+    }
 }

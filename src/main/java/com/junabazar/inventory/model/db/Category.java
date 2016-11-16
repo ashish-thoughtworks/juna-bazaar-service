@@ -1,6 +1,7 @@
 package com.junabazar.inventory.model.db;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "categories")
 @AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
     @Id

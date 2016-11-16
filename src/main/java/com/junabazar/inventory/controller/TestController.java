@@ -18,4 +18,9 @@ public class TestController {
     public String test() {
         return "Test";
     }
+
+    @RequestMapping("/open/error")
+    public void error(){
+        throw new RuntimeException("Error from method error");
+    }
 }

@@ -1,6 +1,5 @@
 package com.junabazar.inventory.controller;
 
-import com.junabazar.inventory.model.db.Product;
 import com.junabazar.inventory.model.view.ProductView;
 import com.junabazar.inventory.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
