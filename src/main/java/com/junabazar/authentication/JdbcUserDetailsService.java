@@ -21,7 +21,6 @@ public class JdbcUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<User> users = userRepository.findAll();
         User user = userRepository.findByEmail(username);
         if(user == null)
             throw new UsernameNotFoundException(username + " does not exist");

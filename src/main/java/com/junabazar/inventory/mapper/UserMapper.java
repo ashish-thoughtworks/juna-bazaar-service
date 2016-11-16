@@ -18,7 +18,7 @@ public class UserMapper {
     public User mapToDBModel(UserView userView){
         City city=cityRepository.findOne(userView.getCityId());
         if(null==city){
-            new IllegalArgumentException("Invalid city id");
+            throw new IllegalArgumentException("Invalid city id");
         }
         return User.builder()
                 .email(userView.getEmail())
