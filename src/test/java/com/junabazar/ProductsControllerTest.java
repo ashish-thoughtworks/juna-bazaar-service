@@ -66,7 +66,6 @@ public class ProductsControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/open/products?size=1&page=0"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.content[0].imageUrl", Matchers.containsString("http")));
-
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content[0].imageUrl", Matchers.containsString("http://res.cloudinary.com/dnryicujh/image/upload/v1479274189/iw2xegar0tzy3ln9edc3.jpg")));
     }
 }
