@@ -12,10 +12,6 @@ import static org.junit.Assert.assertEquals;
  * Created by dharihar on 16/11/2016.
  */
 public class LoginTest extends JunabazarApiApplicationTests {
-    @Test
-    public void shouldExecuteWithoutFail() {
-        assertEquals(1, 1);
-    }
 
     @Test
     public void shouldReturn200OkWhenBaseURLIsHit() {
