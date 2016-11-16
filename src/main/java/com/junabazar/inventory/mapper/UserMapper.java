@@ -5,6 +5,7 @@ import com.junabazar.inventory.model.db.User;
 import com.junabazar.inventory.model.view.UserView;
 import com.junabazar.inventory.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,7 +23,7 @@ public class UserMapper {
         }
         return User.builder()
                 .email(userView.getEmail())
-                .password(userView.getPassword())
+                .password(new BCryptPasswordEncoder().encode(userView.getPassword()))
                 .mobileNo(userView.getMobileNo())
                 .name(userView.getFullName())
                 .city(city)
