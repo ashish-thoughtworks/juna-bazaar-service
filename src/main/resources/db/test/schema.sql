@@ -11,8 +11,8 @@ CREATE TABLE  IF NOT EXISTS users
 	email VARCHAR(100) NOT NULL,
 	password VARCHAR(200) NOT NULL,
 	mobile_no VARCHAR(10) NOT NULL,
-	name VARCHAR
 	city_id bigint NOT NULL,
+	name VARCHAR(100)
 );
 
 CREATE TABLE  IF NOT EXISTS categories
