@@ -13,7 +13,7 @@ public class CityTest extends JunabazarApiApplicationTests {
 
     @Test
     public void shouldReturnCitiesWhenCityEndPointIsCalled() {
-            when()
+        when()
                 .get("/open/cities")
                 .then()
                 .body("name", hasItems("Pune", "Bangalore", "Chennai"))

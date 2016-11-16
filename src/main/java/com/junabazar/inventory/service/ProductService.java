@@ -24,17 +24,14 @@ import java.util.List;
 @Transactional
 public class ProductService {
 
-    private ProductRepository productRepository;
-    private CityRepository cityRepository;
-    private CategoryRepository categoryRepository;
-
     @Autowired
-    public ProductService(ProductRepository productRepository, CityRepository cityRepository, CategoryRepository categoryRepository)
-    {
-        this.productRepository = productRepository;
-        this.cityRepository = cityRepository;
-        this.categoryRepository = categoryRepository;
-    }
+    private ProductRepository productRepository;
+    @Autowired
+    private CityRepository cityRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private ImageService imageService;
 
     public Page<ProductView> getProducts(Pageable pageable) {
         Page<Product> products = productRepository.findAll(pageable);
@@ -44,7 +41,7 @@ public class ProductService {
 
     private List<ProductView> collectProductsToView(Page<Product> products) {
         final List<ProductView> productsViewList = new ArrayList<>();
-        products.forEach( product -> {
+        products.forEach(product -> {
             productsViewList.add(ProductsMapper.mapToView(product));
         });
         return productsViewList;
@@ -64,5 +61,7 @@ public class ProductService {
                 .build();
 
         productRepository.save(product);
+
+        imageService.saveImages(productView.getImageUrls(), product);
     }
 }
