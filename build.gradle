@@ -14,10 +14,6 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'pmd'
-apply plugin: 'findbugs'
-findbugs {
-	reportLevel = "high"
-}
 
 jar {
 	baseName = 'junabazar-api'
@@ -46,12 +42,4 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 	compile group: 'com.h2database', name: 'h2', version: '1.4.193'
-}
-
-tasks.withType(FindBugs) {
-	reports {
-		xml.enabled false
-		html.enabled true
-		html.stylesheet resources.text.fromFile('./src/main/resources/config/xsl/color.xsl')
-	}
 }
