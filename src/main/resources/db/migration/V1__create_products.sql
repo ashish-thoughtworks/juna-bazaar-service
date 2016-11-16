@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS products;
-
 CREATE TABLE products
 (
   id bigint PRIMARY KEY NOT NULL,
