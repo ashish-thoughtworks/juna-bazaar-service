@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS images;
-
 CREATE TABLE images
 (
 	id bigint PRIMARY KEY NOT NULL,

@@ -1,37 +1,30 @@
 package com.junabazar.inventory.model.db;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-
-/**
- * Created by khantwalh on 11/14/16.
- */
 
 @Entity
 @Table(name = "users")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String email;
+
     private String password;
+
+    @Column(name = "mobile_no")
     private String mobileNo;
 
+    private String name;
+    
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-
-    public User(long id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-    }
 }
