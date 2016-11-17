@@ -17,6 +17,9 @@ public class AuditorAwareImpl implements AuditorAware<User>{
     @Override
     public User getCurrentAuditor() {
         String emailId = SecurityContextHolder.getContext().getAuthentication().getName();
+        if(emailId == null || "anonymousUser".equalsIgnoreCase(emailId)){
+            return userRepository.findOne(2L);
+        }
         return userRepository.findByEmail(emailId);
     }
 }

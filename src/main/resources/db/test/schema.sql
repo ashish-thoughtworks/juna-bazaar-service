@@ -12,8 +12,7 @@ CREATE TABLE  IF NOT EXISTS users
 	password VARCHAR(200) NOT NULL,
 	mobile_no VARCHAR(10) NOT NULL,
 	city_id bigint NOT NULL,
-    name varchar(100)
-
+	name VARCHAR(100)
 );
 
 CREATE TABLE  IF NOT EXISTS categories
