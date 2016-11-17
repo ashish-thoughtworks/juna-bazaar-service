@@ -14,11 +14,22 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 //apply plugin: 'pmd'
+apply plugin: 'jacoco'
 
 jar {
 	baseName = 'junabazar-api'
 	version = '0.0.1-SNAPSHOT'
 }
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination "${buildDir}/jacocoHtml"
+	}
+	executionData = files('build/jacoco/test.exec')
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
