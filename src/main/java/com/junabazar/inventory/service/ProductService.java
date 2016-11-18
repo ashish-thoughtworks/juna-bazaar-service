@@ -4,12 +4,10 @@ import com.junabazar.inventory.mapper.ProductsMapper;
 import com.junabazar.inventory.model.db.Category;
 import com.junabazar.inventory.model.db.City;
 import com.junabazar.inventory.model.db.Product;
-import com.junabazar.inventory.model.db.User;
 import com.junabazar.inventory.model.view.ProductView;
 import com.junabazar.inventory.repository.CategoryRepository;
 import com.junabazar.inventory.repository.CityRepository;
 import com.junabazar.inventory.repository.ProductRepository;
-import com.junabazar.inventory.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,7 +45,7 @@ public class ProductService {
         return productsViewList;
     }
 
-    public void createAdd(ProductView productView) {
+    public Product createAdd(ProductView productView) {
         City city = cityRepository.findOne(productView.getCityId());
         Category category = categoryRepository.findOne(productView.getCategoryId());
 
@@ -63,5 +61,7 @@ public class ProductService {
         productRepository.save(product);
 
         imageService.saveImages(productView.getImageUrls(), product);
+
+        return product;
     }
 }
