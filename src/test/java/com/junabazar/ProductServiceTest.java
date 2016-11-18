@@ -18,7 +18,6 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -32,8 +31,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTest {
 
-    @Captor
-    ArgumentCaptor<Product> captor;
     @Mock
     private ProductRepository productRepository;
     @Mock
@@ -43,7 +40,6 @@ public class ProductServiceTest {
     @Mock
     private CategoryRepository categoryRepository;
     @InjectMocks
-    @Autowired
     private ProductService productService;
 
     @Test
@@ -78,17 +74,15 @@ public class ProductServiceTest {
 
 
         //execute
-        productService.createAdd(productView);
-
-        verify(productRepository).save(captor.capture());
+        Product product = productService.createAdd(productView);
 
         //verify
-        assertTrue(1L == captor.getValue().getId());
-        assertEquals(title, captor.getValue().getTitle());
-        assertEquals(description, captor.getValue().getDescription());
-        assertEquals(price, captor.getValue().getPrice(), 0.0D);
-        assertEquals(category, captor.getValue().getCategory());
-        assertEquals(city, captor.getValue().getCity());
+        assertTrue(1L == product.getId());
+        assertEquals(title, product.getTitle());
+        assertEquals(description, product.getDescription());
+        assertEquals(price, product.getPrice(), 0.0D);
+        assertEquals(category, product.getCategory());
+        assertEquals(city, product.getCity());
     }
 
 
